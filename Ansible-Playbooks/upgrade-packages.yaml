@@ -16,8 +16,8 @@
     # Send Email if reboot is required
 - name: SendEmail
   community.general.mail:
-    host: {{ mailhandler }}
-    port: {{mailport}}
-    to: {{ sendto }}
+    host: "{{ mailhandler }}"
+    port: "{{mailport}}"
+    to: "{{ sendto }}"
     subject: Reboot-Required in Homelab
-    body: Reboot required on {{host}}
+    body: Reboot required
