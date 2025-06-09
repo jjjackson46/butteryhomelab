@@ -12,12 +12,3 @@
       stat:
         path: /var/run/reboot-required
       register: reboot_required
-      
-    # Send Email if reboot is required
-- name: SendEmail
-  community.general.mail:
-    host: "{{ mailhandler }}"
-    port: "{{mailport}}"
-    to: "{{ sendto }}"
-    subject: Reboot-Required in Homelab
-    body: Reboot required
