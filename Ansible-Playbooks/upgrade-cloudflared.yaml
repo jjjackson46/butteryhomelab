@@ -1,0 +1,15 @@
+- hosts: RaspberryPi
+
+  tasks:
+    - name: Upgrade cloudflared package
+      package:
+        name: cloudflared
+        state: latest
+      register: upgrade_result
+
+    - name: Restart cloudflared service if package was upgraded
+      systemd:
+        name: cloudflared
+        state: restarted
+        daemon_reload: yes
+      when: upgrade_result.changed
