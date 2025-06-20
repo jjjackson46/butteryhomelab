@@ -2,9 +2,10 @@
 
   tasks:
     - name: Upgrade cloudflared package
-      package:
+      apt:
         name: cloudflared
-        state: latest
+        update_cache: yes
+        upgrade: yes
       register: upgrade_result
 
     - name: Restart cloudflared service if package was upgraded
