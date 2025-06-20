@@ -2,11 +2,9 @@
 
   tasks:
     - name: Upgrade cloudflared package
-      apt:
-        name: cloudflared
-        update_cache: yes
-        upgrade: yes
+      command: cloudflared update
       register: upgrade_result
+      changed_when: "'Updated to version' in upgrade_result.stdout or 'Cloudflared is up to date' not in upgrade_result.stdout"
 
     - name: Restart cloudflared service if package was upgraded
       systemd:
